@@ -6,7 +6,7 @@
 require 'yaml'
 require 'bundler/setup'
 
-RACK_ENV = ENV['RACK_ENV'].dup.freeze
+RACK_ENV = (ENV['RACK_ENV'] || 'development').dup.freeze
 
 lib_dir = File.expand_path('../lib', File.dirname(__FILE__))
 $:.unshift(lib_dir) unless $:.include?(lib_dir)
@@ -19,4 +19,4 @@ require 'mdwnin'
 
 database_yml    = File.expand_path('database.yml', File.dirname(__FILE__))
 database_config = YAML.load_file(database_yml)[RACK_ENV]
-Sequel.connect(database_config)
+DB = Sequel.connect(database_config)
