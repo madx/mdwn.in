@@ -6,12 +6,11 @@ require 'mdwnin/models/revision'
 
 class Mdwnin::RevisionSpec < SequelSpec
   subject { Mdwnin::Revision }
+  let(:valid_data) {
+    { raw_body: "Hello world" }
+  }
 
-  describe 'validations' do
-    let(:valid_data) {
-      { raw_body: "Hello world" }
-    }
-
+  describe "validations" do
     it "is valid with a raw body" do
       rev = subject.new(valid_data)
 
@@ -23,6 +22,15 @@ class Mdwnin::RevisionSpec < SequelSpec
 
       rev.wont_be :valid?
       rev.errors.keys.must_include :raw_body
+    end
+  end
+
+  describe "before save" do
+    it "compiles the raw body as Markdown" do
+      rev = subject.create(valid_data)
+
+      rev.compiled.wont_be_empty
+      rev.compiled.must_match valid_data[:raw_body]
     end
   end
 end
