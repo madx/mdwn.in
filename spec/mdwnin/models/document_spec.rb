@@ -16,4 +16,18 @@ class Mdwnin::DocumentSpec < SequelSpec
       end
     end
   end
+
+  describe "associations" do
+    subject { Mdwnin::Document.create }
+
+    it "has no revisions upon create" do
+      subject.revisions.must_be_empty
+    end
+
+    it "may add additional revisions" do
+      subject.add_revision(raw_body: "Hello world")
+
+      subject.revisions.wont_be_empty
+    end
+  end
 end

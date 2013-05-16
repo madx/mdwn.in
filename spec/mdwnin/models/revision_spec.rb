@@ -33,4 +33,15 @@ class Mdwnin::RevisionSpec < SequelSpec
       rev.compiled.must_match valid_data[:raw_body]
     end
   end
+
+  describe "associations" do
+    it "may have an associated document" do
+      doc = Mdwnin::Document.create
+      rev = Mdwnin::Revision.new(valid_data)
+
+      doc.add_revision(rev)
+
+      rev.document.wont_be_nil
+    end
+  end
 end

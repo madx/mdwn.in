@@ -3,10 +3,13 @@
 require 'sequel'
 
 require 'mdwnin/markdown'
+require 'mdwnin/models/document'
 
 module Mdwnin
   class Revision < Sequel::Model
     plugin :validation_helpers
+
+    many_to_one :document
 
     def validate
       super
