@@ -5,15 +5,12 @@
 
 require 'yaml'
 require 'bundler/setup'
+require 'sequel'
 
 RACK_ENV = (ENV['RACK_ENV'] || 'development').dup.freeze
 
 lib_dir = File.expand_path('../lib', File.dirname(__FILE__))
 $:.unshift(lib_dir) unless $:.include?(lib_dir)
-
-## Require
-
-require 'mdwnin'
 
 ## Database connection
 
