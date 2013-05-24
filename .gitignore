@@ -1,5 +1,6 @@
 .bundle/
 .env
+.sass-cache
 bin/
 
 config/database.yml
