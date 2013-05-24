@@ -27,7 +27,7 @@ module Mdwnin
     end
 
     get "/" do
-      haml :read_only, locals: { document: Document.first }
+      haml :read_only, locals: { document: Document.order(:id).first }
     end
 
     get "/new" do
