@@ -32,6 +32,16 @@ module Mdwnin
       haml :form, locals: { document: Document.new }
     end
 
+    get "/gh/:user/:repo" do
+      uri = URI("https://raw.github.com/#{params[:user]}/#{params[:repo]}/master/README.md")
+      content = Net::HTTP.get(uri).force_encoding('utf-8')
+
+      document = Document.new(raw_body: content)
+      document.compile
+
+      haml :read_only, locals: { document: document }
+    end
+
     get "/:key" do
       document = Document.first(key: params[:key])
 
