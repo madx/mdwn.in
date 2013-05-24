@@ -5,6 +5,7 @@ gem 'sequel'
 gem 'redcarpet'
 gem 'rouge'
 gem 'thin'
+gem 'haml'
 
 group :development do
   gem 'minitest'
