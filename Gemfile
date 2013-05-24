@@ -10,6 +10,7 @@ gem 'unicorn'
 gem 'haml'
 gem 'foreman'
 gem 'pry'
+gem 'capistrano'
 
 group :production do
   gem 'pg'
