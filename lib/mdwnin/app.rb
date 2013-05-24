@@ -44,8 +44,18 @@ module Mdwnin
       haml :read_only, locals: { document: document }
     end
 
-    get "/:key" do
-      document = Document.first(key: params[:key])
+    get %r{^/([a-z0-9]{64})$} do |read_only_key|
+      document = Document.first(read_only_key: read_only_key)
+
+      raise Sinatra::NotFound if document.nil?
+
+      haml :read_only, locals: { document: document }
+    end
+
+    get "/:private_key" do
+      document = Document.first(key: params[:private_key])
+
+      raise Sinatra::NotFound if document.nil?
 
       haml :read_write, locals: { document: document }
     end

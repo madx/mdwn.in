@@ -1,5 +1,7 @@
 %nav
   %li
     %a{href: url("/#{document.key}/edit")} Edit
+  %li
+    %a{href: url("/#{document.read_only_key}")} Share
 
 = haml :document, locals: { document: document }

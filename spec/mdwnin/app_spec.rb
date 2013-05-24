@@ -42,10 +42,45 @@ describe Mdwnin::App do
     it "show a form to create a document" do
       last_response.body.must_match 'textarea'
     end
+
+    it "builds a form with the POST method" do
+      last_response.body.must_match 'method="POST"'
+    end
   end
 
-  describe "GET /:key" do
-    describe "when :key references a document" do
+  describe "GET /:read_only_key" do
+    describe "when :read_only_key references a document" do
+      it "is ok" do
+        get "/#{first_document.read_only_key}"
+
+        last_response.must_be :ok?
+      end
+
+      it "shows the given document" do
+        document = Mdwnin::Document.create(raw_body: "New document")
+        get "/#{document.read_only_key}"
+
+        last_response.body.must_match "<p>New document</p>"
+      end
+
+      it "shows an read-only version" do
+        get "/#{first_document.read_only_key}"
+
+        last_response.body.wont_match "#{first_document.key}/edit"
+      end
+    end
+
+    describe "when :read_only_key does not reference a document" do
+      it "returns a 404" do
+        get "/00000000000000000000000000000000000000000000000000000000"
+
+        last_response.must_be :not_found?
+      end
+    end
+  end
+
+  describe "GET /:private_key" do
+    describe "when :private_key references a document" do
       it "is ok" do
         get "/#{first_document.key}"
 
@@ -65,15 +100,19 @@ describe Mdwnin::App do
         last_response.body.must_match "#{first_document.key}/edit"
       end
 
-      it "builds a form with the POST method" do
-        get "/new"
+      it "show a sharing link" do
+        get "/#{first_document.key}"
 
-        last_response.body.must_match 'method="POST"'
+        last_response.body.must_match "#{first_document.read_only_key}"
       end
     end
 
-    describe "when :key does not reference a document" do
-      # TODO
+    describe "when :private_key does not reference a document" do
+      it "returns a 404" do
+        get "/abcd.123"
+
+        last_response.must_be :not_found?
+      end
     end
   end
 
