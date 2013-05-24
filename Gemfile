@@ -9,6 +9,7 @@ gem 'rouge'
 gem 'unicorn'
 gem 'haml'
 gem 'foreman'
+gem 'pry'
 
 group :production do
   gem 'pg'
@@ -23,7 +24,6 @@ group :development do
   gem 'rb-inotify'
   gem 'rb-fsevent'
   gem 'guard-minitest'
-  gem 'pry'
   gem 'sqlite3'
 end
 
