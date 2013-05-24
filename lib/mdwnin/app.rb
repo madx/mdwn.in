@@ -1,5 +1,7 @@
 # encoding: utf-8
 
+require 'net/http'
+
 require 'sinatra'
 require 'haml'
 
