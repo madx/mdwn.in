@@ -14,6 +14,10 @@ $:.unshift(lib_dir) unless $:.include?(lib_dir)
 
 ## Database connection
 
-database_yml    = File.expand_path('database.yml', File.dirname(__FILE__))
-database_config = YAML.load_file(database_yml)[RACK_ENV]
-DB = Sequel.connect(database_config)
+def database_config
+  database_yml = File.expand_path('database.yml', File.dirname(__FILE__))
+
+  YAML.load_file(database_yml)[RACK_ENV]
+end
+
+DB = Sequel.connect(ENV['DATABASE_URL'] || database_config)
