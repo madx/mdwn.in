@@ -10,16 +10,52 @@ module Mdwnin
 
     configure do
       set :app_file, __FILE__
+      set :haml, { attr_wrapper: '"' }
+
+      enable :method_override
+    end
+
+    helpers do
+      def document_editor_params(document, editable)
+        {
+          method: 'POST',
+          action: url(editable ? "/#{document.key}" : "/")
+        }
+      end
     end
 
     get "/" do
       haml :read_only, locals: { document: Document.first }
     end
 
+    get "/new" do
+      haml :form, locals: { document: Document.new }
+    end
+
     get "/:key" do
       document = Document.first(key: params[:key])
 
-      haml :read_only, locals: { document: Document.first }
+      haml :read_write, locals: { document: document }
+    end
+
+    get "/:key/edit" do
+      document = Document.first(key: params[:key])
+
+      haml :form, locals: { document: document, edit: true }
+    end
+
+    post "/" do
+      document = Document.create(params[:document])
+
+      redirect to("/#{document.key}")
+    end
+
+    put "/:key" do
+      document = Document.first(key: params[:key])
+
+      document.update_fields(params[:document], [:raw_body])
+
+      redirect to("/#{document.key}")
     end
   end
 end

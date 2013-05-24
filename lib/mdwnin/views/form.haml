@@ -1,0 +1,7 @@
+%form{document_editor_params(document, defined?(edit) && edit)}
+  .editor
+    %textarea{name: 'document[raw_body]'}= document.raw_body
+  %p
+    %input{type: 'submit', name: 'commit'}
+  - if defined?(edit) && edit
+    %input{type: 'hidden', name: '_method', value: 'PUT'}
