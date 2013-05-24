@@ -13,10 +13,10 @@ require_relative '../config/environment'
 lib_dir = File.expand_path('../lib', File.dirname(__FILE__))
 $:.unshift(lib_dir) unless $:.include?(lib_dir)
 
-class SequelSpec < MiniTest::Spec
+module MiniTest::Spec::Sequel
   def run(*args, &block)
     result = nil
-    Sequel::Model.db.transaction(:rollback=>:always){result = super}
+    ::Sequel::Model.db.transaction(:rollback=>:always){result = super}
     result
   end
 end

@@ -5,7 +5,9 @@ require 'spec_helper'
 
 require 'mdwnin/models/document'
 
-class Mdwnin::DocumentSpec < SequelSpec
+describe Mdwnin::Document do
+  include MiniTest::Spec::Sequel
+
   subject { Mdwnin::Document }
   let(:valid_data) {
     { raw_body: "Hello world" }
@@ -28,9 +30,8 @@ class Mdwnin::DocumentSpec < SequelSpec
   end
 
   describe "before save" do
-    subject {
-      Mdwnin::Document.create(valid_data)
-    }
+    subject { Mdwnin::Document.create(valid_data) }
+
     it "compiles the raw body as Markdown" do
       subject.raw_body = "New body"
       subject.save
