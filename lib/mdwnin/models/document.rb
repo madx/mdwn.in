@@ -23,9 +23,13 @@ module Mdwnin
     end
 
     def before_save
-      self.compiled = Markdown.render(raw_body)
+      compile
 
       super
+    end
+
+    def compile
+      self.compiled = Markdown.render(raw_body)
     end
 
     def title
