@@ -1,27 +1,88 @@
 html {
-  color: #28261e; }
+  height: 100%; }
 
 body {
+  height: 100%;
+  color: #28261e;
   max-width: 50em;
-  margin: 1em auto;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 2em 0 0;
   line-height: 1.4;
   font-size: 1.2em;
   font-family: "Merriweather Sans", Helvetica, "Droid Sans", "DejaVu Sans", sans-serif; }
-
-a:link, a:visited {
-  color: blue;
-  text-decoration: underline; }
-  a:link:hover, a:link:active, a:visited:hover, a:visited:active {
-    color: #3333ff;
-    text-decoration: none; }
 
 nav {
   text-align: right; }
   nav li {
     display: inline-block;
     font-weight: bold;
-    padding-left: 0.5em; }
+    background-color: #3e88ed;
+    color: white;
+    border: none;
+    padding: 0.5em 0.75em;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -o-border-radius: 7px;
+    border-radius: 7px; }
+    nav li:hover, nav li:focus {
+      background-color: #6da5f1; }
+    nav li a:link, nav li a:visited {
+      color: white;
+      text-decoration: none; }
+      nav li a:link:hover, nav li a:link:focus, nav li a:visited:hover, nav li a:visited:focus {
+        color: white;
+        text-decoration: none; }
 
+article a:link, article a:visited {
+  color: #3e88ed;
+  text-decoration: underline; }
+  article a:link:hover, article a:link:focus, article a:visited:hover, article a:visited:focus {
+    color: #6da5f1;
+    text-decoration: none; }
 article hr {
   border: 1px solid #cccccc;
   border-top: 0; }
+article pre {
+  font-family: "Monaco", "Droid Sans Mono", "DejaVu Sans Mono", monospace;
+  background-color: #333;
+  color: #efefef;
+  padding: 0.5em;
+  -moz-border-radius: 7px;
+  -webkit-border-radius: 7px;
+  -o-border-radius: 7px;
+  border-radius: 7px; }
+
+.editor {
+  height: 100%; }
+  .editor form {
+    height: 100%; }
+  .editor textarea {
+    font-family: "Monaco", "Droid Sans Mono", "DejaVu Sans Mono", monospace;
+    width: 100%;
+    height: calc(100% - 3.5em);
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border: none;
+    background: transparent; }
+  .editor p {
+    margin: 0 0 1em;
+    line-height: 1;
+    text-align: right; }
+    .editor p input[type=submit] {
+      background-color: #3e88ed;
+      color: white;
+      border: none;
+      padding: 0.5em 0.75em;
+      font-weight: bold;
+      -moz-border-radius: 7px;
+      -webkit-border-radius: 7px;
+      -o-border-radius: 7px;
+      border-radius: 7px; }
+      .editor p input[type=submit]:hover, .editor p input[type=submit]:focus {
+        background-color: #6da5f1; }
+    .editor p .cancel {
+      color: red; }

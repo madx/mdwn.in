@@ -1,23 +1,19 @@
 html {
-  color: #28261e;
+  height: 100%;
 }
 
 body {
+  height: 100%;
+  color: #28261e;
   max-width: 50em;
-  margin: 1em auto;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 2em 0 0;
   line-height: 1.4;
   font-size: 1.2em;
   font-family: "Merriweather Sans", Helvetica, "Droid Sans", "DejaVu Sans", sans-serif;
-}
-
-a:link, a:visited {
-  color: blue;
-  text-decoration: underline;
-
-  &:hover, &:active {
-    color: lighten(blue, 10%);
-    text-decoration: none;
-  }
 }
 
 nav {
@@ -26,13 +22,98 @@ nav {
   li {
     display: inline-block;
     font-weight: bold;
-    padding-left: 0.5em;
+    background-color: #3e88ed;
+    color: white;
+    border: none;
+    padding: 0.5em 0.75em;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -o-border-radius: 7px;
+    border-radius: 7px;
+
+    &:hover, &:focus {
+      background-color: lighten(#3e88ed, 10%);
+    }
+
+    a:link, a:visited {
+      color: white;
+      text-decoration: none;
+
+      &:hover, &:focus {
+        color: white;
+        text-decoration: none;
+      }
+    }
   }
 }
 
 article {
+  a:link, a:visited {
+    color: #3e88ed;
+    text-decoration: underline;
+
+    &:hover, &:focus {
+      color: lighten(#3e88ed, 10%);
+      text-decoration: none;
+    }
+  }
+
   hr {
     border: 1px solid #cccccc;
     border-top: 0;
+  }
+
+  pre {
+    font-family: "Monaco", "Droid Sans Mono", "DejaVu Sans Mono", monospace;
+    background-color: #333;
+    color: #efefef;
+    padding: 0.5em;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -o-border-radius: 7px;
+    border-radius: 7px;
+  }
+}
+
+.editor {
+  height: 100%;
+  form {
+    height: 100%;
+  }
+  textarea {
+    font-family: "Monaco", "Droid Sans Mono", "DejaVu Sans Mono", monospace;
+    width: 100%;
+    height: calc(100% - 3.5em);
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border: none;
+    background: transparent;
+  }
+
+  p {
+    margin: 0 0 1em;
+    line-height: 1;
+    text-align: right;
+
+    input[type=submit] {
+      background-color: #3e88ed;
+      color: white;
+      border: none;
+      padding: 0.5em 0.75em;
+      font-weight: bold;
+      -moz-border-radius: 7px;
+      -webkit-border-radius: 7px;
+      -o-border-radius: 7px;
+      border-radius: 7px;
+
+      &:hover, &:focus {
+        background-color: lighten(#3e88ed, 10%);
+      }
+    }
+
+    .cancel {
+      color: red;
+    }
   }
 }
