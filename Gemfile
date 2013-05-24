@@ -6,6 +6,11 @@ gem 'redcarpet'
 gem 'rouge'
 gem 'unicorn'
 gem 'haml'
+gem 'foreman'
+
+group :production do
+  gem 'pg'
+end
 
 group :development do
   gem 'minitest'
