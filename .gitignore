@@ -1,4 +1,5 @@
 .bundle/
+.env
 bin/
 
 config/database.yml
