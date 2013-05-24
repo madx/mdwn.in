@@ -64,6 +64,10 @@ describe Mdwnin::Document do
     end
   end
 
+  describe "mass assignment" do
+    # TODO
+  end
+
   describe "#title" do
     describe "when the document has headers" do
       it "returns the first matched header" do
