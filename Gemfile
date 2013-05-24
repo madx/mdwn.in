@@ -4,7 +4,7 @@ gem 'sinatra'
 gem 'sequel'
 gem 'redcarpet'
 gem 'rouge'
-gem 'thin'
+gem 'unicorn'
 gem 'haml'
 
 group :development do
