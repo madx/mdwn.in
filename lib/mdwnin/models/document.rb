@@ -27,6 +27,13 @@ module Mdwnin
 
       super
     end
+
+    def title
+      regexp = %r{<h(\d)[^>]*>([^<]+)</h\1>}
+      headers = compiled.scan(regexp).map { |_, t| t }
+
+      headers.first or "Untitled"
+    end
   end
 end
 

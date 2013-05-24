@@ -63,4 +63,28 @@ describe Mdwnin::Document do
       document.errors.keys.must_include :raw_body
     end
   end
+
+  describe "#title" do
+    describe "when the document has headers" do
+      it "returns the first matched header" do
+        document = subject.create(raw_body: "# Title")
+
+        document.title.must_equal "Title"
+      end
+
+      it "selects the first header" do
+        document = subject.create(raw_body: "# Title\n## Subtitle")
+
+        document.title.must_equal "Title"
+      end
+    end
+
+    describe "when the document does not have headers" do
+      it "returns Untitled" do
+        document = subject.create(raw_body: "Hello world")
+
+        document.title.must_equal "Untitled"
+      end
+    end
+  end
 end
