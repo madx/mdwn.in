@@ -43,7 +43,6 @@ GEM
     net-ssh (2.6.7)
     net-ssh-gateway (1.2.0)
       net-ssh (>= 2.6.5)
-    pg (0.15.1)
     pry (0.9.12.1)
       coderay (~> 1.0.5)
       method_source (~> 0.8)
@@ -95,7 +94,6 @@ DEPENDENCIES
   haml
   minitest
   mysql2
-  pg
   pry
   rack-test
   rb-fsevent
