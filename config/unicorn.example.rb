@@ -12,8 +12,8 @@ shared_path = File.join(app_dir, "shared")
 listen "127.0.0.1:3402"
 pid "#{shared_path}/pids/unicorn.pid"
 
-stderr_path "#{shared_path}/logs/unicorn.stderr.log"
-stdout_path "#{shared_path}/logs/unicorn.stdout.log"
+stderr_path "#{shared_path}/log/unicorn.stderr.log"
+stdout_path "#{shared_path}/log/unicorn.stdout.log"
 
 before_fork do |server, worker|
   Signal.trap 'TERM' do
