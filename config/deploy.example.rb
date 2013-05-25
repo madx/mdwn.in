@@ -22,7 +22,7 @@ after "deploy:restart", "deploy:cleanup"
 
 set :unicorn_pid, "#{fetch(:shared_path)}/pids/unicorn.pid"
 set :unicorn_sock, "#{fetch(:shared_path)}/sockets/unicorn.sock"
-set :unicorn_conf, "#{fetch(:release_path)}/config/unicorn.rb"
+set :unicorn_conf, "#{fetch(:current_path)}/config/unicorn.rb"
 
 set :bundle_flags, "--deployment --quiet --binstubs"
 
