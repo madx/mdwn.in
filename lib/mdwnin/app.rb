@@ -17,6 +17,11 @@ module Mdwnin
       enable :method_override
     end
 
+    require 'sinatra/reloader' if development?
+    configure :development do
+      register Sinatra::Reloader
+    end
+
     helpers do
       def document_editor_params(document, editable)
         {
