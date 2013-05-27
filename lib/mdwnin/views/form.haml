@@ -1,9 +1,26 @@
+- content_for :navigation do
+  %li
+    %a{href: '#save'} Save
+    -# %input{type: 'submit', name: 'commit', value: 'Save'}
+  %li
+    or
+    %a.cancel{href: url("/#{defined?(edit) && edit ? document.key : nil}")} cancel
 .editor
   %form{document_editor_params(document, defined?(edit) && edit)}
-    %p
-      %input{type: 'submit', name: 'commit', value: 'Save'}
-      or
-      %a.cancel{href: url("/#{defined?(edit) && edit ? document.key : nil}")} cancel
     %textarea{name: 'document[source]'}= document.source
     - if defined?(edit) && edit
       %input{type: 'hidden', name: '_method', value: 'PUT'}
+
+- content_for :scripts do
+  :javascript
+    var textarea = document.querySelector('form textarea')
+    textarea.focus()
+    var pos = textarea.value.length * 2
+    textarea.setSelectionRange(pos, pos)
+
+    var saveButton = document.querySelector('a[href="#save"]')
+    saveButton.addEventListener('click', function(ev) {
+      document.forms[0].submit()
+      ev.preventDefault()
+    }, false)
+

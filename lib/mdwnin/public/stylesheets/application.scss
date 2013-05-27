@@ -3,47 +3,72 @@ html {
 }
 
 body {
-  height: 100%;
+  height: calc(100% - 1em);
   color: #28261e;
   max-width: 50em;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   margin: 0 auto;
-  padding: 2em 0 0;
+  padding: 1em 1em 0;
   line-height: 1.4;
-  font-size: 1.2em;
+  font-size: 1.1em;
   font-family: "Merriweather Sans", Helvetica, "Droid Sans", "DejaVu Sans", sans-serif;
 }
 
 nav {
-  text-align: right;
+  display: block;
+  height: 2em;
 
   li {
     display: inline-block;
-    font-weight: bold;
-    background-color: #3e88ed;
-    color: white;
-    border: none;
-    padding: 0.5em 0.75em;
-    -moz-border-radius: 7px;
-    -webkit-border-radius: 7px;
-    -o-border-radius: 7px;
-    border-radius: 7px;
-
-    &:hover, &:focus {
-      background-color: lighten(#3e88ed, 10%);
-    }
 
     a:link, a:visited {
+      display: inline-block;
+      font-weight: bold;
+      background-color: #3e88ed;
+      color: white;
+      border: none;
+      padding: 0.5em 0.75em;
+      -moz-border-radius: 7px;
+      -webkit-border-radius: 7px;
+      -o-border-radius: 7px;
+      border-radius: 7px;
       color: white;
       text-decoration: none;
 
       &:hover, &:focus {
         color: white;
         text-decoration: none;
+        background-color: lighten(#3e88ed, 10%);
+      }
+
+      &.cancel {
+        background-color: transparent;
+        color: #e00;
+        text-decoration: underline;
+        font-weight: normal;
+        padding: 0;
+
+        &:hover, &:focus {
+          text-decoration: none;
+        }
       }
     }
+
+    &:last-child {
+      float: right;
+      a:link, a:visited {
+        background-color: #83c918;
+
+        &:hover, &:focus {
+          background-color: lighten(#83c918, 10%);
+        }
+      }
+    }
+  }
+  & + * {
+    margin-top: 1.34em;
   }
 }
 
@@ -76,44 +101,22 @@ article {
 }
 
 .editor {
-  height: 100%;
+  height: calc(100% - 4em);
+
   form {
     height: 100%;
   }
+
   textarea {
     font-family: "Monaco", "Droid Sans Mono", "DejaVu Sans Mono", monospace;
     width: 100%;
-    height: calc(100% - 3.5em);
+    height: 100%;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     border: none;
     background: transparent;
-  }
-
-  p {
-    margin: 0 0 1em;
-    line-height: 1;
-    text-align: right;
-
-    input[type=submit] {
-      background-color: #3e88ed;
-      color: white;
-      border: none;
-      padding: 0.5em 0.75em;
-      font-weight: bold;
-      -moz-border-radius: 7px;
-      -webkit-border-radius: 7px;
-      -o-border-radius: 7px;
-      border-radius: 7px;
-
-      &:hover, &:focus {
-        background-color: lighten(#3e88ed, 10%);
-      }
-    }
-
-    .cancel {
-      color: red;
-    }
+    outline: 1px solid #ddd;
+    padding: 0.5em;
   }
 }

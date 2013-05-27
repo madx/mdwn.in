@@ -10,6 +10,9 @@ require 'mdwnin/models/document'
 module Mdwnin
   class App < Sinatra::Base
 
+    require 'sinatra/content_for'
+    helpers Sinatra::ContentFor
+
     configure do
       set :app_file, __FILE__
       set :haml, { attr_wrapper: '"' }

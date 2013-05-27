@@ -2,39 +2,56 @@ html {
   height: 100%; }
 
 body {
-  height: 100%;
+  height: calc(100% - 1em);
   color: #28261e;
   max-width: 50em;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   margin: 0 auto;
-  padding: 2em 0 0;
+  padding: 1em 1em 0;
   line-height: 1.4;
-  font-size: 1.2em;
+  font-size: 1.1em;
   font-family: "Merriweather Sans", Helvetica, "Droid Sans", "DejaVu Sans", sans-serif; }
 
 nav {
-  text-align: right; }
+  display: block;
+  height: 2em; }
   nav li {
-    display: inline-block;
-    font-weight: bold;
-    background-color: #3e88ed;
-    color: white;
-    border: none;
-    padding: 0.5em 0.75em;
-    -moz-border-radius: 7px;
-    -webkit-border-radius: 7px;
-    -o-border-radius: 7px;
-    border-radius: 7px; }
-    nav li:hover, nav li:focus {
-      background-color: #6da5f1; }
+    display: inline-block; }
     nav li a:link, nav li a:visited {
+      display: inline-block;
+      font-weight: bold;
+      background-color: #3e88ed;
+      color: white;
+      border: none;
+      padding: 0.5em 0.75em;
+      -moz-border-radius: 7px;
+      -webkit-border-radius: 7px;
+      -o-border-radius: 7px;
+      border-radius: 7px;
       color: white;
       text-decoration: none; }
       nav li a:link:hover, nav li a:link:focus, nav li a:visited:hover, nav li a:visited:focus {
         color: white;
-        text-decoration: none; }
+        text-decoration: none;
+        background-color: #6da5f1; }
+      nav li a:link.cancel, nav li a:visited.cancel {
+        background-color: transparent;
+        color: #e00;
+        text-decoration: underline;
+        font-weight: normal;
+        padding: 0; }
+        nav li a:link.cancel:hover, nav li a:link.cancel:focus, nav li a:visited.cancel:hover, nav li a:visited.cancel:focus {
+          text-decoration: none; }
+    nav li:last-child {
+      float: right; }
+      nav li:last-child a:link, nav li:last-child a:visited {
+        background-color: #83c918; }
+        nav li:last-child a:link:hover, nav li:last-child a:link:focus, nav li:last-child a:visited:hover, nav li:last-child a:visited:focus {
+          background-color: #9de62e; }
+  nav + * {
+    margin-top: 1.34em; }
 
 article a:link, article a:visited {
   color: #3e88ed;
@@ -56,33 +73,17 @@ article pre {
   border-radius: 7px; }
 
 .editor {
-  height: 100%; }
+  height: calc(100% - 4em); }
   .editor form {
     height: 100%; }
   .editor textarea {
     font-family: "Monaco", "Droid Sans Mono", "DejaVu Sans Mono", monospace;
     width: 100%;
-    height: calc(100% - 3.5em);
+    height: 100%;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     border: none;
-    background: transparent; }
-  .editor p {
-    margin: 0 0 1em;
-    line-height: 1;
-    text-align: right; }
-    .editor p input[type=submit] {
-      background-color: #3e88ed;
-      color: white;
-      border: none;
-      padding: 0.5em 0.75em;
-      font-weight: bold;
-      -moz-border-radius: 7px;
-      -webkit-border-radius: 7px;
-      -o-border-radius: 7px;
-      border-radius: 7px; }
-      .editor p input[type=submit]:hover, .editor p input[type=submit]:focus {
-        background-color: #6da5f1; }
-    .editor p .cancel {
-      color: red; }
+    background: transparent;
+    outline: 1px solid #ddd;
+    padding: 0.5em; }
