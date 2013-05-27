@@ -73,7 +73,7 @@ article pre {
   border-radius: 7px; }
 
 .editor {
-  height: calc(100% - 4em); }
+  height: calc(100% - 5.5em); }
   .editor form {
     height: 100%; }
   .editor textarea {
@@ -87,3 +87,14 @@ article pre {
     background: transparent;
     outline: 1px solid #ddd;
     padding: 0.5em; }
+
+footer {
+  font-size: 0.9em;
+  color: #666;
+  padding-top: 1.1em; }
+  footer a:link, footer a:visited {
+    color: #789fd4;
+    text-decoration: underline; }
+    footer a:link:hover, footer a:link:focus, footer a:visited:hover, footer a:visited:focus {
+      color: #9fbbe0;
+      text-decoration: none; }
