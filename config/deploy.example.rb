@@ -37,10 +37,10 @@ set :bundle_flags, "--deployment --quiet --binstubs"
 namespace :deploy do
   task :restart do
     old_pid = run("cat #{unicorn_pid}")
-    run "OLD_PID=`cat #{unicorn_pid}`; if [ -f #{unicorn_pid} ]; then kill -USR2 $OLD_PID; sleep 2 ; kill -QUIT $OLD_PID ; else cd #{deploy_to}/current && bundle exec unicorn -c #{unicorn_conf} -E #{rails_env} -D; fi"
+    run "OLD_PID=`cat #{unicorn_pid}`; if [ -f #{unicorn_pid} ]; then kill -USR2 $OLD_PID; sleep 2 ; kill -QUIT $OLD_PID ; else cd #{current_path} && bin/unicorn -c #{unicorn_conf} -E #{rails_env} -D; fi"
   end
   task :start do
-    run "cd #{deploy_to}/current && bundle exec unicorn -c #{unicorn_conf} -E #{rails_env} -D"
+    run "cd #{current_path} && bin/unicorn -c #{unicorn_conf} -E #{rails_env} -D"
   end
   task :stop do
     run "if [ -f #{unicorn_pid} ]; then kill -QUIT `cat #{unicorn_pid}`; fi"
