@@ -88,5 +88,13 @@ module Mdwnin
 
       redirect to("/#{document.key}")
     end
+
+    not_found do
+      haml :not_found
+    end
+
+    error do
+      haml :error
+    end
   end
 end
