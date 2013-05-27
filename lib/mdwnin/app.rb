@@ -32,6 +32,14 @@ module Mdwnin
           action: url(editable ? "/#{document.key}" : "/")
         }
       end
+
+      def title
+        @title ? "#{@title} - " : nil
+      end
+
+      def set_title(title)
+        @title = title
+      end
     end
 
     get "/" do
@@ -39,10 +47,13 @@ module Mdwnin
     end
 
     get "/new" do
+      set_title "New document"
       haml :form, locals: { document: Document.new }
     end
 
     get "/gh/:user/:repo" do
+      set_title "#{params[:user]}/#{params[:repo]}"
+
       # TODO: Test this and make it error-proof
       uri = URI("https://raw.github.com/#{params[:user]}/#{params[:repo]}/master/README.md")
       content = Net::HTTP.get(uri).force_encoding('utf-8')
@@ -58,6 +69,7 @@ module Mdwnin
 
       raise Sinatra::NotFound if document.nil?
 
+      set_title document.title
       haml :read_only, locals: { document: document }
     end
 
@@ -66,12 +78,14 @@ module Mdwnin
 
       raise Sinatra::NotFound if document.nil?
 
+      set_title document.title
       haml :read_write, locals: { document: document }
     end
 
     get "/:key/edit" do
       document = Document.first(key: params[:key])
 
+      set_title document.title + ' (Edit)'
       haml :form, locals: { document: document, edit: true }
     end
 
@@ -90,10 +104,12 @@ module Mdwnin
     end
 
     not_found do
+      set_title "Not Found"
       haml :not_found
     end
 
     error do
+      set_title "Error"
       haml :error
     end
   end
