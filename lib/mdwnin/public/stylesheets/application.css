@@ -75,7 +75,7 @@ article pre {
 .editor {
   height: calc(100% - 5.5em); }
   .editor form {
-    height: 100%; }
+    height: 50%; }
   .editor textarea {
     font-family: "Monaco", "Droid Sans Mono", "DejaVu Sans Mono", monospace;
     width: 100%;
@@ -87,6 +87,10 @@ article pre {
     background: transparent;
     outline: 1px solid #ddd;
     padding: 0.5em; }
+  .editor article {
+    margin-top: 1%;
+    height: 49%;
+    overflow: auto; }
 
 footer {
   font-size: 0.9em;

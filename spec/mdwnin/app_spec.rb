@@ -174,6 +174,20 @@ describe Mdwnin::App do
     end
   end
 
+  describe "POST /render" do
+    it "is ok" do
+      post "/render"
+
+      last_response.must_be :ok?
+    end
+
+    it "returns the rendered document givent with source" do
+      post "/render", source: "Hello world"
+
+      last_response.body.must_match "Hello world"
+    end
+  end
+
   describe "PUT /:key" do
     describe "when :key references a document" do
       describe "with valid parameters" do

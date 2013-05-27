@@ -10,13 +10,40 @@
     %textarea{name: 'document[source]'}= document.source
     - if defined?(edit) && edit
       %input{type: 'hidden', name: '_method', value: 'PUT'}
+  %article= document.compiled
 
 - content_for :scripts do
   :javascript
-    var textarea = document.querySelector('form textarea')
+    var textarea = document.querySelector('form textarea'),
+        preview  = document.querySelector('article'),
+        pos      = textarea.value.length * 2,
+        dirty    = false
+
     textarea.focus()
-    var pos = textarea.value.length * 2
     textarea.setSelectionRange(pos, pos)
+    textarea.addEventListener('keyup', function(ev) {
+      dirty = true
+    }, false)
+
+    updatePreview = function() {
+      if (!dirty) return;
+      console.log("Updating")
+      var xhr = new XMLHttpRequest()
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          preview.innerHTML = xhr.responseText
+          dirty = false
+        }
+      }
+      xhr.open('POST', '/render', true)
+      xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+      xhr.send('source=' + encodeURIComponent(textarea.value))
+    }
+    window.setTimeout(function() {
+      updatePreview()
+      window.setTimeout(arguments.callee, 1000)
+    }, 1000)
+
 
     var saveButton = document.querySelector('a[href="#save"]')
     saveButton.addEventListener('click', function(ev) {

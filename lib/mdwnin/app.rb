@@ -95,6 +95,12 @@ module Mdwnin
       redirect to("/#{document.key}")
     end
 
+    post "/render" do
+      source = params[:source] || ""
+
+      erb Markdown.render(source)
+    end
+
     put "/:key" do
       document = Document.first(key: params[:key])
 
