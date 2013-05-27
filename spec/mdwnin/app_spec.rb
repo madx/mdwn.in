@@ -170,7 +170,11 @@ describe Mdwnin::App do
     end
 
     describe "with invalid parameters" do
-      # TODO
+      it "returns a 400" do
+        post "/"
+
+        last_response.status.must_equal 400
+      end
     end
   end
 
@@ -215,7 +219,13 @@ describe Mdwnin::App do
       end
 
       describe "with invalid parameters" do
-        # TODO
+        it "redirects to the edit page" do
+          put "/#{first_document.key}"
+          follow_redirect!
+
+          last_request.url.must_match "edit"
+          last_request.url.must_match first_document.key
+        end
       end
     end
 

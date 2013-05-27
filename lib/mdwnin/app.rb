@@ -90,23 +90,33 @@ module Mdwnin
     end
 
     post "/" do
-      document = Document.create(params[:document])
+      attrs    = params[:document] || {}
+      document = Document.new(attrs)
 
-      redirect to("/#{document.key}")
+      begin
+        document.save
+        redirect to("/#{document.key}")
+      rescue Sequel::ValidationFailed
+        halt 400, haml(:form, locals: { document: document })
+      end
     end
 
     post "/render" do
       source = params[:source] || ""
 
-      erb Markdown.render(source)
+      erb Markdown.render(source), layout: false
     end
 
     put "/:key" do
+      attrs    = params[:document] || {}
       document = Document.first(key: params[:key])
 
-      document.update_fields(params[:document], [:source])
-
-      redirect to("/#{document.key}")
+      begin
+        document.update_fields(attrs, [:source])
+        redirect to("/#{document.key}")
+      rescue Sequel::ValidationFailed, Sequel::InvalidValue
+        redirect to("/#{document.key}/edit")
+      end
     end
 
     not_found do
