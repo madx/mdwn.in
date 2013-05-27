@@ -3,6 +3,7 @@ source 'https://rubygems.org/'
 ruby "2.0.0"
 
 gem 'sinatra'
+gem 'sinatra-contrib'
 gem 'sequel'
 gem 'redcarpet'
 gem 'rouge'
@@ -20,7 +21,6 @@ group :development do
   gem 'minitest'
   gem 'rack-test'
   gem 'sass'
-  gem 'sinatra-contrib'
   gem 'guard'
   gem 'rb-inotify'
   gem 'rb-fsevent'
