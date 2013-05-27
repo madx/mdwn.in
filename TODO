@@ -1,1 +1,9 @@
-* 500 on empty source
+* Add options
+  - Layout theme
+  - Code theme
+  - Custom CSS
+* Add no-layaout mode
+* Add render an URL
+* Improve the live preview
+* Check for responsiveness
+* Hosted solution?
