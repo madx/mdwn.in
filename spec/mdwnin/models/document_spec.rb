@@ -10,7 +10,7 @@ describe Mdwnin::Document do
 
   subject { Mdwnin::Document }
   let(:valid_data) {
-    { raw_body: "Hello world" }
+    { source: "Hello world" }
   }
 
   describe "before create" do
@@ -33,7 +33,7 @@ describe Mdwnin::Document do
     subject { Mdwnin::Document.create(valid_data) }
 
     it "compiles the raw body as Markdown" do
-      subject.raw_body = "New body"
+      subject.source = "New body"
       subject.save
 
       subject.compiled.wont_be_empty
@@ -42,7 +42,7 @@ describe Mdwnin::Document do
 
     it "does not overwrite the key" do
       old_key = subject.key.dup
-      subject.raw_body = "New body"
+      subject.source = "New body"
       subject.save
 
       subject.key.must_equal old_key
@@ -60,7 +60,7 @@ describe Mdwnin::Document do
       document = subject.new
 
       document.wont_be :valid?
-      document.errors.keys.must_include :raw_body
+      document.errors.keys.must_include :source
     end
   end
 
@@ -71,13 +71,13 @@ describe Mdwnin::Document do
   describe "#title" do
     describe "when the document has headers" do
       it "returns the first matched header" do
-        document = subject.create(raw_body: "# Title")
+        document = subject.create(source: "# Title")
 
         document.title.must_equal "Title"
       end
 
       it "selects the first header" do
-        document = subject.create(raw_body: "# Title\n## Subtitle")
+        document = subject.create(source: "# Title\n## Subtitle")
 
         document.title.must_equal "Title"
       end
@@ -85,7 +85,7 @@ describe Mdwnin::Document do
 
     describe "when the document does not have headers" do
       it "returns Untitled" do
-        document = subject.create(raw_body: "Hello world")
+        document = subject.create(source: "Hello world")
 
         document.title.must_equal "Untitled"
       end

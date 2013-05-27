@@ -4,6 +4,6 @@
       %input{type: 'submit', name: 'commit', value: 'Save'}
       or
       %a.cancel{href: url("/#{defined?(edit) && edit ? document.key : nil}")} cancel
-    %textarea{name: 'document[raw_body]'}= document.raw_body
+    %textarea{name: 'document[source]'}= document.source
     - if defined?(edit) && edit
       %input{type: 'hidden', name: '_method', value: 'PUT'}

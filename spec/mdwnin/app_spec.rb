@@ -15,7 +15,7 @@ describe Mdwnin::App do
 
   before do
     # Ensure the first document is always created
-    Mdwnin::Document.create({raw_body: "Hello world"})
+    Mdwnin::Document.create({source: "Hello world"})
   end
 
   let(:first_document) { Mdwnin::Document.first }
@@ -57,7 +57,7 @@ describe Mdwnin::App do
       end
 
       it "shows the given document" do
-        document = Mdwnin::Document.create(raw_body: "New document")
+        document = Mdwnin::Document.create(source: "New document")
         get "/#{document.read_only_key}"
 
         last_response.body.must_match "<p>New document</p>"
@@ -88,7 +88,7 @@ describe Mdwnin::App do
       end
 
       it "shows the given document" do
-        document = Mdwnin::Document.create(raw_body: "New document")
+        document = Mdwnin::Document.create(source: "New document")
         get "/#{document.key}"
 
         last_response.body.must_match "<p>New document</p>"
@@ -125,7 +125,7 @@ describe Mdwnin::App do
       end
 
       it "shows the editor for the given document" do
-        document = Mdwnin::Document.create(raw_body: "New document")
+        document = Mdwnin::Document.create(source: "New document")
         get "/#{document.key}/edit"
 
         last_response.body.must_match "textarea"
@@ -155,14 +155,14 @@ describe Mdwnin::App do
     describe "with valid parameters" do
       it "creates a new document" do
         before_count = Mdwnin::Document.count
-        post "/", document: { raw_body: "Hello world" }
+        post "/", document: { source: "Hello world" }
         after_count = Mdwnin::Document.count
 
         after_count.must_equal(before_count + 1)
       end
 
       it "redirects to the new document" do
-        post "/", document: { raw_body: "Hello world" }
+        post "/", document: { source: "Hello world" }
         follow_redirect!
 
         last_request.url.must_match Mdwnin::Document.last.key
@@ -178,7 +178,7 @@ describe Mdwnin::App do
     describe "when :key references a document" do
       describe "with valid parameters" do
         it "updates the document" do
-          put "/#{first_document.key}", document: { raw_body: "Updated content" }
+          put "/#{first_document.key}", document: { source: "Updated content" }
           follow_redirect!
 
           last_response.body.must_match "<p>Updated content</p>"
@@ -186,14 +186,14 @@ describe Mdwnin::App do
 
         it "does not create a new document" do
           before_count = Mdwnin::Document.count
-          put "/#{first_document.key}", document: { raw_body: "Updated content" }
+          put "/#{first_document.key}", document: { source: "Updated content" }
           after_count = Mdwnin::Document.count
 
           after_count.must_equal(before_count)
         end
 
         it "redirects to the updated document" do
-          put "/#{first_document.key}", document: { raw_body: "Updated content" }
+          put "/#{first_document.key}", document: { source: "Updated content" }
           follow_redirect!
 
           last_request.url.must_match first_document.key

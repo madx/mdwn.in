@@ -12,7 +12,7 @@ module Mdwnin
     def validate
       super
 
-      validates_presence [:raw_body]
+      validates_presence [:source]
     end
 
     def before_create
@@ -29,7 +29,7 @@ module Mdwnin
     end
 
     def compile
-      self.compiled = Markdown.render(raw_body)
+      self.compiled = Markdown.render(source)
     end
 
     def title

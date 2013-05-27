@@ -40,10 +40,11 @@ module Mdwnin
     end
 
     get "/gh/:user/:repo" do
+      # TODO: Test this and make it error-proof
       uri = URI("https://raw.github.com/#{params[:user]}/#{params[:repo]}/master/README.md")
       content = Net::HTTP.get(uri).force_encoding('utf-8')
 
-      document = Document.new(raw_body: content)
+      document = Document.new(source: content)
       document.compile
 
       haml :read_only, locals: { document: document }
@@ -80,7 +81,7 @@ module Mdwnin
     put "/:key" do
       document = Document.first(key: params[:key])
 
-      document.update_fields(params[:document], [:raw_body])
+      document.update_fields(params[:document], [:source])
 
       redirect to("/#{document.key}")
     end
