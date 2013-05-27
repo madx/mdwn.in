@@ -28,7 +28,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="9.9041096"
-     inkscape:cx="10.486919"
+     inkscape:cx="-0.55920256"
      inkscape:cy="15.46027"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -46,7 +46,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -55,22 +55,22 @@
      inkscape:groupmode="layer"
      id="layer1"
      transform="translate(0,-1020.3622)">
-    <path
-       style="fill:#3e88ed;fill-opacity:1;stroke:none"
-       d="M 16 2 C 8.2680138 2 2 8.2680138 2 16 C 2 23.731986 8.2680138 30 16 30 C 23.731986 30 30 23.731986 30 16 C 30 8.2680138 23.731986 2 16 2 z M 16 4 C 22.627417 4 28 9.3725828 28 16 C 28 22.627417 22.627417 28 16 28 C 9.3725828 28 4 22.627417 4 16 C 4 9.3725828 9.3725828 4 16 4 z "
-       transform="translate(0,1020.3622)"
-       id="path2987" />
     <text
        xml:space="preserve"
        style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#2c569c;fill-opacity:1;stroke:none;font-family:Sans"
-       x="2.7229493"
-       y="1045.407"
+       x="4.4130859"
+       y="1045.6591"
        id="text3760"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan3762"
-         x="2.7229493"
-         y="1045.407"
-         style="font-size:28px;font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;fill:#2c569c;fill-opacity:1;font-family:Linux Libertine;-inkscape-font-specification:Linux Libertine Bold Italic">M</tspan></text>
+         x="4.4130859"
+         y="1045.6591"
+         style="font-size:28px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;fill:#2c569c;fill-opacity:1;font-family:Amble;-inkscape-font-specification:Amble Bold">M</tspan></text>
+    <path
+       style="fill:#3e88ed;fill-opacity:1;stroke:none"
+       d="M 1 1 L 1 31 L 31 31 L 31 1 L 1 1 z M 4 4 L 28 4 L 28 28 L 4 28 L 4 4 z "
+       transform="translate(0,1020.3622)"
+       id="rect2993" />
   </g>
 </svg>
