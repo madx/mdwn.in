@@ -20,6 +20,8 @@ role :db,  "example.com", :primary => true
 set :keep_releases, 3
 after "deploy:restart", "deploy:cleanup"
 
+set :normalize_asset_timestamps, false
+
 set :unicorn_pid, "#{fetch(:shared_path)}/pids/unicorn.pid"
 set :unicorn_sock, "#{fetch(:shared_path)}/sockets/unicorn.sock"
 set :unicorn_conf, "#{fetch(:current_path)}/config/unicorn.rb"
