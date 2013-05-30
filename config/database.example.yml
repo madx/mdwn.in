@@ -1,0 +1,2 @@
+development: sqlite://db/development.db
+test: sqlite://db/test.db
