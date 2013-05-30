@@ -4,4 +4,6 @@
 bin/
 
 config/database.yml
+config/deploy.rb
+config/unicorn.rb
 db/*.db
