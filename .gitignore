@@ -1,9 +1,10 @@
-.bundle/
-.env
-.sass-cache
-bin/
+/.bundle/
+/.env
+/.sass-cache
+/bin/
+/tmp/
 
-config/database.yml
-config/deploy.rb
-config/unicorn.rb
-db/*.db
+/config/database.yml
+/config/deploy.rb
+/config/unicorn.rb
+/db/*.db
