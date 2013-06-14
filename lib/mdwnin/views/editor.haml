@@ -9,14 +9,16 @@
     %textarea{name: 'document[source]'}= document.source
     - if defined?(edit) && edit
       %input{type: 'hidden', name: '_method', value: 'PUT'}
-  %article= document.compiled
+  %article#preview= document.compiled
+  %a#preview-link{href: '#preview', title: "Preview changes"} ⎘
 
 - content_for :scripts do
   :javascript
-    var textarea = document.querySelector('form textarea'),
-        preview  = document.querySelector('article'),
-        pos      = textarea.value.length * 2,
-        dirty    = false
+    var textarea    = document.getElementsByName('document[source]')[0],
+        preview     = document.getElementById('preview'),
+        previewLink = document.getElementById('preview-link'),
+        pos         = textarea.value.length * 2,
+        dirty       = false
 
     textarea.focus()
     textarea.setSelectionRange(pos, pos)
@@ -26,7 +28,6 @@
 
     updatePreview = function() {
       if (!dirty) return;
-      console.log("Updating")
       var xhr = new XMLHttpRequest()
       xhr.onreadystatechange = function() {
         if (xhr.readyState == 4 && xhr.status == 200) {
@@ -38,11 +39,27 @@
       xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
       xhr.send('source=' + encodeURIComponent(textarea.value))
     }
+
+    togglePreview = function() {
+      if (window.location.hash == '#preview') {
+        window.location.hash = ''
+        previewLink.textContent = "\u2397"
+      } else {
+        window.location.hash = '#preview'
+        previewLink.textContent = "\u2398"
+      }
+    }
+
     window.setTimeout(function() {
       updatePreview()
       window.setTimeout(arguments.callee, 1000)
     }, 1000)
+    updatePreview()
 
+    previewLink.addEventListener('click', function(ev) {
+      togglePreview()
+      ev.preventDefault()
+    })
 
     var saveButton = document.querySelector('a[href="#save"]')
     saveButton.addEventListener('click', function(ev) {
