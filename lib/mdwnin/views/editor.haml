@@ -1,9 +1,10 @@
 - content_for :navigation do
   %li
-    %a{href: '#save'} Save
+    %a.btn.primary{href: '#save'} Save
   %li
     or
     %a.cancel{href: url("/#{defined?(edit) && edit ? document.key : nil}")} cancel
+
 .editor
   %form{document_editor_params(document, defined?(edit) && edit)}
     %textarea{name: 'document[source]'}= document.source
@@ -43,10 +44,10 @@
     togglePreview = function() {
       if (window.location.hash == '#preview') {
         window.location.hash = ''
-        previewLink.textContent = "\u2397"
+        previewLink.textContent = "\u2398"
       } else {
         window.location.hash = '#preview'
-        previewLink.textContent = "\u2398"
+        previewLink.textContent = "\u2397"
       }
     }
 

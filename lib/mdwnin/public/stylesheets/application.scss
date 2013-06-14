@@ -16,6 +16,43 @@ body {
   font-family: "Merriweather Sans", Helvetica, "Droid Sans", "DejaVu Sans", sans-serif;
 }
 
+a.btn {
+  display: inline-block;
+  font-weight: bold;
+  background-color: #3e88ed;
+  color: white;
+  border: none;
+  padding: 0.5em 0.75em;
+  -moz-border-radius: 7px;
+  -webkit-border-radius: 7px;
+  -o-border-radius: 7px;
+  border-radius: 7px;
+  color: white;
+  text-decoration: none;
+
+  &:hover, &:focus {
+    color: white;
+    text-decoration: none;
+    background-color: lighten(#3e88ed, 10%);
+  }
+
+  &.primary {
+    background-color: #83c918;
+
+    &:hover, &:focus {
+      background-color: lighten(#83c918, 10%);
+    }
+  }
+}
+
+a.cancel {
+  color: #e00;
+
+  &:hover, &:focus {
+    text-decoration: none;
+  }
+}
+
 nav {
   display: block;
   height: 2em;
@@ -23,50 +60,11 @@ nav {
   li {
     display: inline-block;
 
-    a:link, a:visited {
-      display: inline-block;
-      font-weight: bold;
-      background-color: #3e88ed;
-      color: white;
-      border: none;
-      padding: 0.5em 0.75em;
-      -moz-border-radius: 7px;
-      -webkit-border-radius: 7px;
-      -o-border-radius: 7px;
-      border-radius: 7px;
-      color: white;
-      text-decoration: none;
-
-      &:hover, &:focus {
-        color: white;
-        text-decoration: none;
-        background-color: lighten(#3e88ed, 10%);
-      }
-
-      &.cancel {
-        background-color: transparent;
-        color: #e00;
-        text-decoration: underline;
-        font-weight: normal;
-        padding: 0;
-
-        &:hover, &:focus {
-          text-decoration: none;
-        }
-      }
-    }
-
     &:last-child {
       float: right;
-      a:link, a:visited {
-        background-color: #83c918;
-
-        &:hover, &:focus {
-          background-color: lighten(#83c918, 10%);
-        }
-      }
     }
   }
+
   & + * {
     margin-top: 1.34em;
   }
@@ -146,10 +144,11 @@ article {
     position: absolute;
     top: 4px;
     right: 4px;
-    font-size: 24px;
-    line-height: 24px;
     width: 24px;
+    line-height: 24px;
+    padding: 0;
     text-align: center;
+    font-size: 24px;
     background-color: rgba(#ddd, 0.5);
     border: 1px solid #ddd;
     color: black;

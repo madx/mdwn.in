@@ -14,42 +14,40 @@ body {
   font-size: 1.1em;
   font-family: "Merriweather Sans", Helvetica, "Droid Sans", "DejaVu Sans", sans-serif; }
 
+a.btn {
+  display: inline-block;
+  font-weight: bold;
+  background-color: #3e88ed;
+  color: white;
+  border: none;
+  padding: 0.5em 0.75em;
+  -moz-border-radius: 7px;
+  -webkit-border-radius: 7px;
+  -o-border-radius: 7px;
+  border-radius: 7px;
+  color: white;
+  text-decoration: none; }
+  a.btn:hover, a.btn:focus {
+    color: white;
+    text-decoration: none;
+    background-color: #6da5f1; }
+  a.btn.primary {
+    background-color: #83c918; }
+    a.btn.primary:hover, a.btn.primary:focus {
+      background-color: #9de62e; }
+
+a.cancel {
+  color: #e00; }
+  a.cancel:hover, a.cancel:focus {
+    text-decoration: none; }
+
 nav {
   display: block;
   height: 2em; }
   nav li {
     display: inline-block; }
-    nav li a:link, nav li a:visited {
-      display: inline-block;
-      font-weight: bold;
-      background-color: #3e88ed;
-      color: white;
-      border: none;
-      padding: 0.5em 0.75em;
-      -moz-border-radius: 7px;
-      -webkit-border-radius: 7px;
-      -o-border-radius: 7px;
-      border-radius: 7px;
-      color: white;
-      text-decoration: none; }
-      nav li a:link:hover, nav li a:link:focus, nav li a:visited:hover, nav li a:visited:focus {
-        color: white;
-        text-decoration: none;
-        background-color: #6da5f1; }
-      nav li a:link.cancel, nav li a:visited.cancel {
-        background-color: transparent;
-        color: #e00;
-        text-decoration: underline;
-        font-weight: normal;
-        padding: 0; }
-        nav li a:link.cancel:hover, nav li a:link.cancel:focus, nav li a:visited.cancel:hover, nav li a:visited.cancel:focus {
-          text-decoration: none; }
     nav li:last-child {
       float: right; }
-      nav li:last-child a:link, nav li:last-child a:visited {
-        background-color: #83c918; }
-        nav li:last-child a:link:hover, nav li:last-child a:link:focus, nav li:last-child a:visited:hover, nav li:last-child a:visited:focus {
-          background-color: #9de62e; }
   nav + * {
     margin-top: 1.34em; }
 
@@ -110,10 +108,11 @@ article pre {
     position: absolute;
     top: 4px;
     right: 4px;
-    font-size: 24px;
-    line-height: 24px;
     width: 24px;
+    line-height: 24px;
+    padding: 0;
     text-align: center;
+    font-size: 24px;
     background-color: rgba(221, 221, 221, 0.5);
     border: 1px solid #ddd;
     color: black;
