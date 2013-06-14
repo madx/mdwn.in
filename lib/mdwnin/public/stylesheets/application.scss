@@ -43,13 +43,30 @@ a.btn {
       background-color: lighten(#83c918, 10%);
     }
   }
-}
 
-a.cancel {
-  color: #e00;
+  &.link {
+    background-color: white;
+    color: #3e88ed;
+    text-decoration: underline;
+    font-weight: normal;
 
-  &:hover, &:focus {
-    text-decoration: none;
+
+    &:hover, &:focus {
+      text-decoration: none;
+      color: lighten(#3e88ed, 10%);
+    }
+  }
+
+  &.cancel {
+    background-color: white;
+    color: #e00;
+    text-decoration: underline;
+    font-weight: normal;
+
+    &:hover, &:focus {
+      text-decoration: none;
+      color: lighten(#e00, 10%);
+    }
   }
 }
 
@@ -148,8 +165,8 @@ article {
     line-height: 24px;
     padding: 0;
     text-align: center;
-    font-size: 24px;
-    background-color: rgba(#ddd, 0.5);
+    font-size: 18px;
+    background-color: lighten(#ddd, 10%);
     border: 1px solid #ddd;
     color: black;
     text-decoration: none;

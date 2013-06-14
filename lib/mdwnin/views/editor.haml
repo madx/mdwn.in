@@ -2,8 +2,7 @@
   %li
     %a.btn.primary{href: '#save'} Save
   %li
-    or
-    %a.cancel{href: url("/#{defined?(edit) && edit ? document.key : nil}")} cancel
+    %a.btn.cancel{href: url("/#{defined?(edit) && edit ? document.key : nil}")} cancel
 
 .editor
   %form{document_editor_params(document, defined?(edit) && edit)}
