@@ -48,7 +48,7 @@ module Mdwnin
 
     get "/new" do
       set_title "New document"
-      haml :form, locals: { document: Document.new }
+      haml :editor, locals: { document: Document.new }
     end
 
     get "/gh/:user/:repo" do
@@ -86,7 +86,7 @@ module Mdwnin
       document = Document.first(key: params[:key])
 
       set_title document.title + ' (Edit)'
-      haml :form, locals: { document: document, edit: true }
+      haml :editor, locals: { document: document, edit: true }
     end
 
     post "/" do
