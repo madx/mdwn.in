@@ -10,7 +10,7 @@
     - if defined?(edit) && edit
       %input{type: 'hidden', name: '_method', value: 'PUT'}
   %article#preview= document.compiled
-  %a#preview-link{href: '#preview', title: "Preview changes (Alt-P)"} P
+  %a.btn.link#preview-link{href: '#preview', title: "Preview changes (Alt-P)"} P
 
 - content_for :scripts do
   %script{src: "/scripts/keymage.min.js"}
