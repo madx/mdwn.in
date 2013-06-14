@@ -123,7 +123,13 @@ article {
   position: relative;
 
   form {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
     height: 100%;
+    width: 100%;
+    background-color: white;
   }
 
   textarea {
@@ -153,10 +159,11 @@ article {
     }
   }
 
-  #preview { display: none; }
-  #preview:target { display: block; }
+  #preview { z-index: 0}
+  #preview:target { z-index: 2; }
 
   #preview-link {
+    z-index: 4;
     display: block;
     position: absolute;
     top: 4px;

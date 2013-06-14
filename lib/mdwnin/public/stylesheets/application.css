@@ -88,7 +88,13 @@ article pre {
   height: calc(100% - 5.5em);
   position: relative; }
   .editor form {
-    height: 100%; }
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    background-color: white; }
   .editor textarea {
     font-family: "Monaco", "Droid Sans Mono", "DejaVu Sans Mono", monospace;
     width: 100%;
@@ -111,10 +117,11 @@ article pre {
     .editor article > * {
       margin-top: 0; }
   .editor #preview {
-    display: none; }
+    z-index: 0; }
   .editor #preview:target {
-    display: block; }
+    z-index: 2; }
   .editor #preview-link {
+    z-index: 4;
     display: block;
     position: absolute;
     top: 4px;
