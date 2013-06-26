@@ -97,7 +97,7 @@ module Mdwnin
         document.save
         redirect to("/#{document.key}")
       rescue Sequel::ValidationFailed
-        halt 400, haml(:form, locals: { document: document })
+        halt 400, haml(:editor, locals: { document: document })
       end
     end
 
