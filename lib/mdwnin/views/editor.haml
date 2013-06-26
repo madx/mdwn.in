@@ -3,12 +3,15 @@
     %a.btn.primary{href: '#save'} Save
   %li
     %a.btn.cancel{href: url("/#{defined?(edit) && edit ? document.key : nil}")} cancel
+  - if defined?(edit) && edit
+    %li#saveStatus
 
 .editor
   %form{document_editor_params(document, defined?(edit) && edit)}
     %textarea{name: 'document[source]'}= document.source
     - if defined?(edit) && edit
       %input{type: 'hidden', name: '_method', value: 'PUT'}
+      %input{type: 'hidden', name: 'document[key]', value: document.key}
   %article#preview= document.compiled
   %a.btn.link#preview-link{href: '#preview', title: "Preview changes (Alt-P)"} P
 

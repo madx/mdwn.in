@@ -113,8 +113,11 @@ module Mdwnin
 
       begin
         document.update_fields(attrs, [:source])
+
+        halt 200, Time.now.strftime("Saved at %T") if request.xhr?
         redirect to("/#{document.key}")
       rescue Sequel::ValidationFailed, Sequel::InvalidValue
+        halt 400, "Save failed" if request.xhr?
         redirect to("/#{document.key}/edit")
       end
     end

@@ -14,6 +14,12 @@ body {
   font-size: 1.1em;
   font-family: "Merriweather Sans", Helvetica, "Droid Sans", "DejaVu Sans", sans-serif; }
 
+#saveStatus.error {
+  color: #d99; }
+
+#saveStatus.notice {
+  color: #999; }
+
 a.btn {
   display: inline-block;
   font-weight: bold;
