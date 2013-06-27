@@ -202,7 +202,7 @@ describe Mdwnin::App do
     it "returns the rendered document givent with source" do
       post "/render", source: "Hello world"
 
-      last_response.body.must_match "Hello world"
+      last_response.body.must_equal "<p>Hello world</p>\n"
     end
   end
 

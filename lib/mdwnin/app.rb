@@ -112,7 +112,7 @@ module Mdwnin
     post "/render" do
       source = params[:source] || ""
 
-      erb Markdown.render(source), layout: false
+      Markdown.render(source)
     end
 
     put "/:key" do
