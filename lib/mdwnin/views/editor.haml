@@ -14,7 +14,8 @@
       %input{type: 'hidden', name: 'document[original]', value: document.source}
       %input{type: 'hidden', name: 'document[key]', value: document.key}
   %article#preview= document.compiled
-  %a.btn.link#preview-link{href: '#preview', title: "Preview changes (Alt-P)"} P
+  %a.btn.link#preview-link{href: '#preview', title: "Preview changes (Alt-P)"}
+    %img{src: '/images/eye.png', alt: 'P'}
 
 - content_for :scripts do
   %script{src: "/scripts/keymage.min.js"}

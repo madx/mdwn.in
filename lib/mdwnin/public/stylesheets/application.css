@@ -14,12 +14,6 @@ body {
   font-size: 1.1em;
   font-family: "Merriweather Sans", Helvetica, "Droid Sans", "DejaVu Sans", sans-serif; }
 
-#saveStatus.error {
-  color: #d99; }
-
-#saveStatus.notice {
-  color: #999; }
-
 a.btn {
   display: inline-block;
   font-weight: bold;
@@ -133,12 +127,16 @@ article pre {
     top: 4px;
     right: 4px;
     width: 24px;
-    line-height: 24px;
     padding: 0;
+    line-height: 1;
     text-align: center;
-    font-size: 18px;
-    border: 1px solid #ddd;
     text-decoration: none; }
+
+#saveStatus.error {
+  color: #d99; }
+
+#saveStatus.notice {
+  color: #999; }
 
 footer {
   font-size: 0.9em;
