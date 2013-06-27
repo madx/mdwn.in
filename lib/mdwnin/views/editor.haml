@@ -1,9 +1,9 @@
 - content_for :navigation do
   %li
     %a.btn.primary{href: '#save'} Save
-  %li
-    %a.btn.cancel{href: url("/#{defined?(edit) && edit ? document.key : nil}")} cancel
   - if defined?(edit) && edit
+    %li
+      %a.btn.cancel{href: '#cancel'} cancel
     %li#saveStatus
 
 .editor
@@ -11,6 +11,7 @@
     %textarea{name: 'document[source]'}= document.source
     - if defined?(edit) && edit
       %input{type: 'hidden', name: '_method', value: 'PUT'}
+      %input{type: 'hidden', name: 'document[original]', value: document.source}
       %input{type: 'hidden', name: 'document[key]', value: document.key}
   %article#preview= document.compiled
   %a.btn.link#preview-link{href: '#preview', title: "Preview changes (Alt-P)"} P
