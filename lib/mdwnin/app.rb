@@ -40,6 +40,12 @@ module Mdwnin
       def set_title(title)
         @title = title
       end
+
+      def filter_spam(params)
+        donotfill = params.delete("donotfill")
+
+        halt 500, "Get out, fucking spammer" if donotfill && !donotfill.empty?
+      end
     end
 
     get "/" do
@@ -90,7 +96,9 @@ module Mdwnin
     end
 
     post "/" do
-      attrs    = params[:document] || {}
+      attrs = params[:document] || {}
+      filter_spam(attrs)
+
       document = Document.new(attrs)
 
       begin
@@ -108,7 +116,9 @@ module Mdwnin
     end
 
     put "/:key" do
-      attrs    = params[:document] || {}
+      attrs = params[:document] || {}
+      filter_spam(attrs)
+
       document = Document.first(key: params[:key])
 
       begin

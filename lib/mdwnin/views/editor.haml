@@ -13,6 +13,7 @@
       %input{type: 'hidden', name: '_method', value: 'PUT'}
       %input{type: 'hidden', name: 'document[original]', value: document.source}
       %input{type: 'hidden', name: 'document[key]', value: document.key}
+    %input{type: 'text', name: 'document[donotfill]', value: '', placeholder: 'Do Not Fill'}
   %article#preview= document.compiled
   %a.btn.link#preview-link{href: '#preview', title: "Preview changes (Alt-P)"}
     %img{src: '/images/eye.png', alt: 'P'}

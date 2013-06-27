@@ -176,6 +176,20 @@ describe Mdwnin::App do
         last_response.status.must_equal 400
       end
     end
+
+    describe "reverse captcha" do
+      it "should refuse the document if donotfill is filled" do
+        post "/", document: { source: "Hello world", donotfill: "I'm a robot'"}
+
+        last_response.status.must_equal 500
+      end
+
+      it "should accept the document if donotfill is empty" do
+        post "/", document: { source: "Hello world", donotfill: ""}
+
+        last_response.must_be :redirect?
+      end
+    end
   end
 
   describe "POST /render" do
@@ -194,9 +208,12 @@ describe Mdwnin::App do
 
   describe "PUT /:key" do
     describe "when :key references a document" do
+
+      let(:document_url) { "/" + first_document.key }
+
       describe "with valid parameters" do
         it "updates the document" do
-          put "/#{first_document.key}", document: { source: "Updated content" }
+          put document_url, document: { source: "Updated content" }
           follow_redirect!
 
           last_response.body.must_match "<p>Updated content</p>"
@@ -211,7 +228,7 @@ describe Mdwnin::App do
         end
 
         it "redirects to the updated document" do
-          put "/#{first_document.key}", document: { source: "Updated content" }
+          put document_url, document: { source: "Updated content" }
           follow_redirect!
 
           last_request.url.must_match first_document.key
@@ -220,11 +237,25 @@ describe Mdwnin::App do
 
       describe "with invalid parameters" do
         it "redirects to the edit page" do
-          put "/#{first_document.key}"
+          put document_url
           follow_redirect!
 
           last_request.url.must_match "edit"
           last_request.url.must_match first_document.key
+        end
+      end
+
+      describe "reverse captcha" do
+        it "should refuse the document if donotfill is filled" do
+          put document_url, document: { source: "Hello world", donotfill: "I'm a robot'"}
+
+          last_response.status.must_equal 500
+        end
+
+        it "should accept the document if donotfill is empty" do
+          put document_url, document: { source: "Hello world", donotfill: ""}
+
+          last_response.must_be :redirect?
         end
       end
     end
