@@ -8,10 +8,11 @@
     %link{href: "/stylesheets/application.css", rel: "stylesheet"}
     %link{rel: "favicon", href: "/favicon.ico"}
   %body
-    %nav
-      = yield_content :navigation
-      %li
-        %a.btn{href: url("/new")} New
+    - unless defined?(skip_ui) && skip_ui
+      %nav
+        = yield_content :navigation
+        %li
+          %a.btn{href: url("/new")} New
     = yield
     = yield_content :scripts
     %footer

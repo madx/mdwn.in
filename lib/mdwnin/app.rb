@@ -67,7 +67,7 @@ module Mdwnin
       document = Document.new(source: content)
       document.compile
 
-      haml :read_only, locals: { document: document }
+      haml :read_only, locals: { document: document, skip_ui: true }
     end
 
     get %r{^/([a-z0-9]{64})$} do |read_only_key|
