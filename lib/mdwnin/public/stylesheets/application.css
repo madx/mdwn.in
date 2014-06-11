@@ -62,27 +62,34 @@ nav {
   nav + * {
     margin-top: 1.34em; }
 
-article a:link, article a:visited {
-  color: #3e88ed;
-  text-decoration: underline; }
-  article a:link:hover, article a:link:focus, article a:visited:hover, article a:visited:focus {
-    color: #6da5f1;
-    text-decoration: none; }
-article hr {
-  border: 1px solid #cccccc;
-  border-top: 0; }
-article pre {
-  font-family: "Monaco", "Droid Sans Mono", "DejaVu Sans Mono", monospace;
-  background-color: #333;
-  color: #efefef;
-  padding: 0.5em;
-  -moz-border-radius: 7px;
-  -webkit-border-radius: 7px;
-  -o-border-radius: 7px;
-  border-radius: 7px;
-  white-space: pre;
-  word-wrap: normal;
-  overflow: auto; }
+article {
+  position: relative; }
+  article header.github {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 0.9em; }
+  article a:link, article a:visited {
+    color: #3e88ed;
+    text-decoration: underline; }
+    article a:link:hover, article a:link:focus, article a:visited:hover, article a:visited:focus {
+      color: #6da5f1;
+      text-decoration: none; }
+  article hr {
+    border: 1px solid #cccccc;
+    border-top: 0; }
+  article pre {
+    font-family: "Monaco", "Droid Sans Mono", "DejaVu Sans Mono", monospace;
+    background-color: #333;
+    color: #efefef;
+    padding: 0.5em;
+    -moz-border-radius: 7px;
+    -webkit-border-radius: 7px;
+    -o-border-radius: 7px;
+    border-radius: 7px;
+    white-space: pre;
+    word-wrap: normal;
+    overflow: auto; }
 
 .editor {
   height: calc(100% - 5.5em);
