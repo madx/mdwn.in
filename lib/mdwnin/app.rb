@@ -61,7 +61,7 @@ module Mdwnin
       set_title "#{params[:user]}/#{params[:repo]}"
 
       # TODO: Test this and make it error-proof
-      uri = URI("https://raw.github.com/#{params[:user]}/#{params[:repo]}/master/README.md")
+      uri = URI("https://raw.githubusercontent.com/#{params[:user]}/#{params[:repo]}/master/README.md")
       content = Net::HTTP.get(uri).force_encoding('utf-8')
 
       document = Document.new(source: content)
